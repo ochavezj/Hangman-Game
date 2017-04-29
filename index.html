@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang= "en-us">
+<meta charset= "UTF-8">
+	<title>Hangman Game</title>
+
+<body>
+
+<h1>Let's Play Hangman!</h1>
+
+<h2>press any key to start</h2>
+
+
+<p>
+current word:
+<span id="randomWord"></span>
+</p>
+
+
+<!--Linking CSS stylesheet to HTML-->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+<!--JavaScript Begins-->
+	<script>
+	//Words Array
+	var wordOptions = [
+			"coding", 
+			"javascript", 
+			"jquery", 
+			"bootcamp"
+		];
+
+	//vriable to chose a random word from the array	
+		var chosenWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+
+	//spaces for chosenWord
+		var wordLength = chosenWord.length;
+		for (i = 0; i < wordLength; i ++) {
+			chosenWord = [chosenWord.slice(0, i*2+1), '',
+			chosenWord.slice(i*2+1)].join('');
+		}
+	//diplay blanks spaces for chosenWord
+		var blanks = "";
+		var chosenLength = chosenWord.length;
+			for(o = 0; o < chosenLength; o++) {
+				var x = chosenWord.chartAt(o);
+
+				if(x === " " || x === "/'")
+			{
+				blanks += x;
+			}
+				else{
+					blanks += "_";
+				}
+			}
+
+			document.getElementById("randomWord").innerHTML = blanks;
+		};
+
+	}
+
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>
